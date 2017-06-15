@@ -1914,7 +1914,8 @@ static fsal_status_t glusterfs_write2(struct fsal_obj_handle *obj_hdl,
 	}
 
 	nb_written = glfs_pwrite(my_fd.glfd, buffer, buffer_size,
-			     seek_descriptor, ((*fsal_stable) ? O_SYNC : 0));
+			     seek_descriptor, 0);
+			     //seek_descriptor, ((*fsal_stable) ? O_SYNC : 0));
 
 	if (nb_written == -1) {
 		retval = errno;
